@@ -3,3 +3,6 @@ Theme Name: Fictional University
 Author: Patrick Murphy
 Version: 1.0
 */
+body {
+    color: rgb(82, 82, 82);
+}
