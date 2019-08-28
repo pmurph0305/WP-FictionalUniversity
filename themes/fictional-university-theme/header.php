@@ -3,7 +3,6 @@
 <head>
     <?php wp_head(); ?>
 </head>
-
 <body>
 <header class="site-header">
     <div class="container">
