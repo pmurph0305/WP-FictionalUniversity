@@ -10,6 +10,7 @@
                 'all_items' => 'All Events',
                 'singular_name' => 'Event'
             ),
+            'supports' => array('title', 'editor', 'excerpt'),
             'has_archive' => true,
             'menu_icon' => 'dashicons-calendar-alt'
         ));
