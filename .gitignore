@@ -19,6 +19,7 @@ app/local.php
 # that do not auto-update and that you DO want to keep in Git.
 public/wp-admin/
 public/wp-includes/
+public/wp-content/plugins
 sql/
 # !app/wp-content/plugins/advanced-custom-fields-pro/
 
