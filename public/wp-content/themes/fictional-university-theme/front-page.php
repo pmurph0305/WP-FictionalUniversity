@@ -19,7 +19,7 @@
         <?php 
           $today = date('Ymd');
           $eventPosts = new WP_Query(array(
-            'posts_per_page' => -1,
+            'posts_per_page' => 2,
             'post_type' => 'event',
             'orderby' => 'meta_value_num',
             'order' => 'ASC',

@@ -15,6 +15,23 @@
         register_nav_menu('footerMenuLocation2', 'Footer Location Two');
         add_theme_support('title-tag');
     }
-
     add_action('after_setup_theme', 'universityFeatures');
+
+    function universityAdjustQueries($query) {
+        if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
+            $today = date('Ymd');
+            $query->set('order', 'ASC');
+            $query->set('order_by', 'meta_value_num');
+            $query->set('meta_key', 'event_date');
+            $query->set('meta_query', array(
+                array(
+                  'key' => 'event_date',
+                  'value' => $today,
+                  'compare' => '>=',
+                  'type' => 'numeric',
+                )
+            ));
+        }
+    }
+    add_action('pre_get_posts', 'universityAdjustQueries');
 ?>
