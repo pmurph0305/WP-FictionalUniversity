@@ -32,6 +32,7 @@
             'menu_icon' => 'dashicons-awards'
         ));
 
+        // Professor post type
         register_post_type('professor', array(
             'public' => true,
             'labels' => array(
@@ -43,6 +44,23 @@
             ),
             'supports' => array('title', 'editor', 'thumbnail'),
             'menu_icon' => 'dashicons-welcome-learn-more'
+        ));
+
+        // Campus post type
+
+        register_post_type('campus', array(
+            'rewrite' => array('slug' => 'campuses'),
+            'public' => true,
+            'labels' => array(
+                'name' => 'Campuses',
+                'add_new_item' => 'Add New Campus',
+                'edit_item' => 'Edit Campus',
+                'all_items' => 'All Campuses',
+                'singular_name' => 'Campus'
+            ),
+            'supports' => array('title', 'editor', 'excerpt'),
+            'has_archive' => true,
+            'menu_icon' => 'dashicons-location-alt'
         ));
 
     }
