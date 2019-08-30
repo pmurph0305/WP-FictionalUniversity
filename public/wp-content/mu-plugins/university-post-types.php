@@ -41,7 +41,7 @@
                 'all_items' => 'All Professors',
                 'singular_name' => 'Professor'
             ),
-            'supports' => array('title', 'editor'),
+            'supports' => array('title', 'editor', 'thumbnail'),
             'menu_icon' => 'dashicons-welcome-learn-more'
         ));
 
