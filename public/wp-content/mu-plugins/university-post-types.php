@@ -27,7 +27,7 @@
                 'all_items' => 'All Programs',
                 'singular_name' => 'Program'
             ),
-            'supports' => array('title', 'editor'),
+            'supports' => array('title'),
             'has_archive' => true,
             'menu_icon' => 'dashicons-awards'
         ));
