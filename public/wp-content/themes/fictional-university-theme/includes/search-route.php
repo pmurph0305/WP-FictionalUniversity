@@ -8,6 +8,12 @@
   }
 
   function universitySearchResults($data) {
+    // holds related programs found through posts of type professor and event.
+    // to prevent duplication of results, and unrelated results.
+    // don't want to query for all the events for a course a professor teacher, when searching for a professor!
+    // but you do want to see his programs.
+    $relatedProgramsFound = array();
+    
     $query = new WP_Query(array(
       'post_type' => array('post', 'page', 'professor', 'program', 'campus', 'event'),
       's' => sanitize_text_field($data['term'])
@@ -34,6 +40,18 @@
           'permalink' => get_the_permalink(),
           'image' => get_the_post_thumbnail_url(0, 'professorLandscape')
         ));
+
+        // add programs to seperate relatedPrograms array, not $results['programs'] to prevent unrelated results in 2nd query.
+        $relatedPrograms = get_field('related_programs');
+        if($relatedPrograms) {
+          foreach($relatedPrograms as $program) {
+            array_push($relatedProgramsFound, array(
+              'title' => get_the_title($program),
+              'permalink' => get_the_permalink($program),
+              'id' => $program->ID
+            ));
+          }
+        }
       } else if (get_post_type() == 'program') {
         $relatedCampuses = get_field('related_campus');
         if ($relatedCampuses) {
@@ -44,7 +62,6 @@
             ));
           }
         }
-
         array_push($results['programs'], array(
           'title' => get_the_title(),
           'permalink' => get_the_permalink(),
@@ -65,6 +82,17 @@
           'day' => $eventDate->format('d'),
           'description' => $description,
         ));
+        // add programs to seperate relatedPrograms array, not $results['programs'] to prevent unrelated results in 2nd query.
+        $relatedPrograms = get_field('related_programs');
+        if($relatedPrograms) {
+          foreach($relatedPrograms as $program) {
+            array_push($relatedProgramsFound, array(
+              'title' => get_the_title($program),
+              'permalink' => get_the_permalink($program),
+              'id' => $program->ID
+            ));
+          }
+        }
       }
       else if (get_post_type() == 'campus') {
         array_push($results['campuses'], array(
@@ -73,7 +101,6 @@
         ));
       }
     }
-
 
     if ($results['programs']) {
       $programsMetaQuery = array(
@@ -118,12 +145,22 @@
           ));
         }
       }
-  
-      $results['professors'] = array_values(array_unique($results['professors'], SORT_REGULAR));
-      $results['events'] = array_values(array_unique($results['events'], SORT_REGULAR));
     }
 
-    return $results;
+    // add the related programs found (through events & professors) to the programs field after the 2nd query
+    if($relatedProgramsFound) {
+      foreach($relatedProgramsFound as $program) {
+        array_push($results['programs'], $program);
+      }
+    }
+
+    $results['professors'] = array_values(array_unique($results['professors'], SORT_REGULAR));
+    $results['events'] = array_values(array_unique($results['events'], SORT_REGULAR));
+    $results['campuses'] = array_values(array_unique($results['campuses'], SORT_REGULAR));
+    $results['programs'] = array_values(array_unique($results['programs'], SORT_REGULAR));
+
+     return $results;
+    
   }
 
   add_action('rest_api_init', 'universityRegisterSearch');
