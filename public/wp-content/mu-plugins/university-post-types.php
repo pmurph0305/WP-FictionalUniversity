@@ -43,11 +43,11 @@
                 'singular_name' => 'Professor'
             ),
             'supports' => array('title', 'editor', 'thumbnail'),
-            'menu_icon' => 'dashicons-welcome-learn-more'
+            'menu_icon' => 'dashicons-welcome-learn-more',
+            'show_in_rest' => true,
         ));
 
         // Campus post type
-
         register_post_type('campus', array(
             'rewrite' => array('slug' => 'campuses'),
             'public' => true,

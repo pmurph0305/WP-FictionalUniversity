@@ -64,7 +64,7 @@ class LiveSearch {
         this.searchResultsDiv.html(`
         <h2 class="search-overlay__section-title">General Info</h2>
         ${results.length ? '<ul class="link-list min-list">' : '<p>No results found.</p>'}
-          ${results.map(result => `<li><a href="${result.link}">${result.title.rendered}</a></li>`).join('')}
+          ${results.map(result => `<li><a href="${result.link}">${result.title.rendered}</a> ${result.authorName ? `by ${result.authorName}` : ""}</li>`).join('')}
           ${results.length ? '</ul>' : ''}
       `)
       this.isLoadingSpinnerDisplayed = false;
