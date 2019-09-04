@@ -2,6 +2,8 @@
 
     require get_theme_file_path('/includes/search-route.php');
 
+    require get_theme_file_path('/includes/like-route.php');
+
     require get_theme_file_path('/includes/page-banner.php');
 
     require get_theme_file_path('/includes/files.php');
