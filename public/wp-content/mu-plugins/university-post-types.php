@@ -2,6 +2,8 @@
     function universityPostTypes() {
         // Event post type.
         register_post_type('event', array(
+            'capability_type' => 'event',
+            'map_meta_cap' => true,
             'rewrite' => array('slug' => 'events'),
             'public' => true,
             'labels' => array(
@@ -13,7 +15,7 @@
             ),
             'supports' => array('title', 'editor', 'excerpt'),
             'has_archive' => true,
-            'menu_icon' => 'dashicons-calendar-alt'
+            'menu_icon' => 'dashicons-calendar-alt',
         ));
 
         // Program post type.
@@ -49,6 +51,8 @@
 
         // Campus post type
         register_post_type('campus', array(
+            'capability_type' => 'campus',
+            'map_meta_cap' => true,
             'rewrite' => array('slug' => 'campuses'),
             'public' => true,
             'labels' => array(
