@@ -141,11 +141,13 @@ class LiveSearch {
   }
 
   openOverlay() {
+    
     this.isOverlayOpen = true;
     this.searchField.val("");
     this.searchOverlay.addClass('search-overlay--active');
     $("body").addClass("body-no-scroll");
     setTimeout(() => this.searchField.focus(), 301);
+    return false;
   }
 } 
 
