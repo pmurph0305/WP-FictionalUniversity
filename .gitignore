@@ -17,11 +17,11 @@ app/local.php
 # Here is an example of how you could ignore the plugins folder
 # and then use the exclamation point to un-ignore only certain plugins
 # that do not auto-update and that you DO want to keep in Git.
-public/wp-admin/
-public/wp-includes/
-public/wp-content/plugins
+# public/wp-admin/
+# public/wp-includes/
+# public/wp-content/plugins
 public/wp-config.php
-public/local.php
+# public/local.php
 sql/
 # !app/wp-content/plugins/advanced-custom-fields-pro/
 
