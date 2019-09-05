@@ -21,7 +21,8 @@ public/wp-admin/
 public/wp-includes/
 public/wp-content/plugins
 public/wp-config.php
-sql/
+public/local.php
+# sql/
 # !app/wp-content/plugins/advanced-custom-fields-pro/
 
 
