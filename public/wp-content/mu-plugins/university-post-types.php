@@ -99,6 +99,18 @@
             'supports' => array('title'),
             'menu_icon' => 'dashicons-heart',
         ));
+
+        register_post_type('homepage-slideshow', array(
+            'public' => true,
+            'labels' => array(
+                'name' => 'Homepage Slideshow',
+                'add_new_item' => 'Add New Slide',
+                'all_items' => 'All Slides',
+                'singular_name' => 'Slide'
+            ),
+            'supports' => array('title', 'thumbnail', 'editor'),
+            'menu_icon' => 'dashicons-images-alt'
+        ));
     }
     add_action('init', 'universityPostTypes');
 ?>
