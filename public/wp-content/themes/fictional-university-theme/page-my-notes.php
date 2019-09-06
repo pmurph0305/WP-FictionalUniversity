@@ -29,9 +29,7 @@
           $notes->the_post(); 
           ?>
           <li data-id="<?php the_ID(); ?>">
-            <?php the_author_ID() ?>
             <input readonly class="note-title-field" value="<?php echo str_replace('Private: ', '', esc_attr(get_the_title()));?>">
-            <?php echo get_current_user_id(); ?>
             <span class="edit-note"><i class="fa fa-pencil" area-hidden="true"></i> Edit</span>
             <span class="delete-note"><i class="fa fa-trash-o" area-hidden="true"></i> Delete</span>
             <textarea readonly class="note-body-field"><?php echo esc_textarea(get_the_content()); ?></textarea>
