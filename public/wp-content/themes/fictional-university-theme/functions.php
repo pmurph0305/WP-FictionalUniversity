@@ -1,5 +1,12 @@
 <?php
 
+    function universityQueryVars($vars) {
+        $vars[] = 'skyColor';
+        return $vars;
+    }
+
+    add_filter('query_vars', 'universityQueryVars');
+
     require get_theme_file_path('/includes/search-route.php');
 
     require get_theme_file_path('/includes/like-route.php');

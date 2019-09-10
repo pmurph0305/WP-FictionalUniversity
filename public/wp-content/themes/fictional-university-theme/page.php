@@ -53,7 +53,17 @@
             <?php } ?>
             
             <div class="generic-content">
-            <p><?php the_content(); ?></p>
+            <?php the_content(); 
+            $skyColor = sanitize_text_field(get_query_var('skyColor'));
+            if ($skyColor) {
+                echo '<p>Sky is '.$skyColor.".</p>";
+            }
+               ?>
+
+               <form method="get">
+                    <input name="skyColor" placeholder="Sky Color">
+                    <button>Submit</button>
+               </form>
             </div>
 
         </div>
